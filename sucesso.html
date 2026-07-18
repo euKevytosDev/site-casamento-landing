@@ -9,15 +9,19 @@
 </head>
 <body>
     <main class="bloco" style="text-align:center; padding-top:80px;">
-        <h2>Pagamento em processamento</h2>
-        <p class="lead-sm">
-            Se o Mercado Pago confirmou, seu site será liberado em instantes.
-            Entre no painel com o e-mail e a senha que você cadastrou.
+        <h2 id="titulo">Pagamento em processamento</h2>
+        <p class="lead-sm" id="texto">
+            Confirmando seu pagamento e preparando a mensalidade…
         </p>
         <p style="margin-top:28px;">
-            <a class="btn-primario" href="https://rafaekevin.com.br/admin/">Ir para o painel</a>
+            <a class="btn-primario" id="btn-mensalidade" href="#" hidden>Autorizar mensalidade — R$&nbsp;49,90</a>
+        </p>
+        <p style="margin-top:16px;">
+            <a class="btn-ghost" href="https://rafaekevin.com.br/admin/">Ir para o painel</a>
         </p>
         <p class="ja-tem"><a href="./index.html">Voltar à landing</a></p>
+        <p id="msg" class="msg" role="status"></p>
     </main>
+    <script src="sucesso.js"></script>
 </body>
 </html>
