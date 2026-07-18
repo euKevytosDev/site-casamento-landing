@@ -1,6 +1,6 @@
 # Landing — Site de Casamento (RK Sites)
 
-Landing de venda — plano único R$ 59,90/mês (permanência mínima 6 meses).
+Landing de venda — plano único R$ 59,90/mês (cancele quando quiser).
 
 ## URL (GitHub Pages)
 
