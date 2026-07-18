@@ -537,6 +537,13 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
     margin: 8px 0 18px;
 }
 
+.campo-dica {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin: -6px 0 14px;
+    line-height: 1.35;
+}
+
 .msg {
     min-height: 1.2em;
     font-size: 0.9rem;

@@ -19,11 +19,14 @@ form?.addEventListener("submit", async (e) => {
     msg.textContent = "Gerando checkout...";
     btn.disabled = true;
 
+    const emailPainel = document.getElementById("email").value.trim();
+    const emailPagador = document.getElementById("emailPagador")?.value.trim() || "";
     const body = {
         nomeNoiva: document.getElementById("nomeNoiva").value.trim(),
         nomeNoivo: document.getElementById("nomeNoivo").value.trim(),
         slug: document.getElementById("slug").value.trim(),
-        email: document.getElementById("email").value.trim(),
+        email: emailPainel,
+        emailPagador: emailPagador || emailPainel,
         senha: document.getElementById("senha").value
     };
 

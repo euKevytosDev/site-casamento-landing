@@ -134,12 +134,18 @@
                 <label for="email">E-mail (login do painel)</label>
                 <input id="email" name="email" type="email" required autocomplete="email">
 
+                <label for="emailPagador">E-mail do Mercado Pago (quem paga)</label>
+                <input id="emailPagador" name="emailPagador" type="email" autocomplete="email"
+                    placeholder="Deixe em branco se for o mesmo do painel">
+                <p class="campo-dica">Use o e-mail da conta Mercado Pago / cartão de quem vai pagar. Assim pais ou outra pessoa podem fechar a assinatura sem conflito.</p>
+
                 <label for="senha">Senha do painel</label>
                 <input id="senha" name="senha" type="password" required minlength="6" autocomplete="new-password">
 
                 <p class="termos">
                     Assinatura mensal sem fidelidade — cancele quando quiser no Mercado Pago.
                     Nos 7 primeiros dias, você pode desistir com reembolso. Sem pagamento, o site fica temporariamente desativado.
+                    No checkout, entre com a mesma conta do e-mail do pagador (ou abra em aba anônima).
                 </p>
 
                 <button type="submit" class="btn-primario btn-full" id="btn-checkout">
