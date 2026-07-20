@@ -68,5 +68,16 @@ fetch(`${API_BASE}/api/assinatura/plano`)
             msg.textContent = "Checkout em configuração: falta o token do Mercado Pago no servidor.";
             btn.disabled = true;
         }
+        if (plano.modoTeste === true) {
+            const aviso = document.createElement("p");
+            aviso.className = "msg";
+            aviso.style.color = "#8a5a00";
+            aviso.style.background = "#fff6e5";
+            aviso.style.padding = "10px 12px";
+            aviso.style.borderRadius = "8px";
+            aviso.style.marginTop = "12px";
+            aviso.textContent = "Modo teste ativo (TOKEN TEST-). Use usuários e cartões de teste do Mercado Pago — nenhum valor real será cobrado.";
+            form?.prepend(aviso);
+        }
     })
     .catch(() => {});
