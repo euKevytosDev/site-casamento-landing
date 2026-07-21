@@ -360,6 +360,12 @@ section.faq-bloco {
     font-weight: 600;
 }
 
+.stat-estrela {
+    font-size: 0.72em;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
 .stat-label {
     margin: 0;
     font-size: 0.88rem;
