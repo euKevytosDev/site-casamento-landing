@@ -1,4 +1,4 @@
-/* Landing RK Sites — visual inspirado em NossoSim (escuro + champagne) */
+/* Landing Loven — visual escuro + champagne */
 :root {
     --bg: #171411;
     --bg-elev: #1f1b17;
@@ -71,26 +71,19 @@ h3 { font-size: 1.35rem; margin: 0 0 8px; }
 
 .marca:hover { text-decoration: none; }
 
-.marca-selo {
-    width: 36px;
-    height: 36px;
+.marca-logo {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 1px solid var(--gold);
-    display: grid;
-    place-items: center;
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 0.04em;
+    object-fit: cover;
+    background: #fff;
 }
 
 .marca-nome {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .topo nav {
