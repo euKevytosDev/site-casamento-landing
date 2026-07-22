@@ -124,7 +124,7 @@
                     <span class="passo-num">1</span>
                     <div>
                         <h3>Cadastre-se</h3>
-                        <p>Leva poucos minutos. Assine pelo Mercado Pago e o painel fica liberado.</p>
+                        <p>Leva poucos minutos. Assine pelo Asaas (PIX, boleto ou cartão) e o painel fica liberado.</p>
                     </div>
                 </li>
                 <li>
@@ -229,7 +229,7 @@
                 </details>
                 <details>
                     <summary>É mensalidade? Posso cancelar?</summary>
-                    <p>Sim, R$&nbsp;59,90/mês sem fidelidade. Cancele quando quiser no Mercado Pago. Sem pagamento, o site fica temporariamente desativado.</p>
+                    <p>Sim, R$&nbsp;59,90/mês sem fidelidade. Cancele quando quiser. Sem pagamento, o site fica temporariamente desativado.</p>
                 </details>
                 <details>
                     <summary>Funciona em qualquer celular?</summary>
@@ -287,16 +287,17 @@
                 <label for="email">E-mail (login do painel)</label>
                 <input id="email" name="email" type="email" required autocomplete="email">
 
-                <label for="emailPagador">E-mail do Mercado Pago (quem paga)</label>
-                <input id="emailPagador" name="emailPagador" type="email" autocomplete="email"
-                    placeholder="Deixe em branco se for o mesmo do painel">
-                <p class="campo-dica">Use o e-mail da conta Mercado Pago / cartão de quem vai pagar. No checkout do MP, entre com <strong>esse mesmo e-mail</strong>.</p>
+                <label for="cpf">CPF de quem paga</label>
+                <input id="cpf" name="cpf" required inputmode="numeric" autocomplete="off"
+                    placeholder="000.000.000-00" maxlength="14"
+                    title="CPF com 11 dígitos">
+                <p class="campo-dica">Necessário para gerar a cobrança no Asaas (PIX, boleto ou cartão).</p>
 
                 <label for="senha">Senha do painel</label>
                 <input id="senha" name="senha" type="password" required minlength="6" autocomplete="new-password">
 
                 <p class="termos">
-                    Assinatura mensal sem fidelidade — cancele quando quiser no Mercado Pago.
+                    Assinatura mensal sem fidelidade — cancele quando quiser.
                     Nos 7 primeiros dias, você pode desistir com reembolso.
                 </p>
 
