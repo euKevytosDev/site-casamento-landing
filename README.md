@@ -4,11 +4,14 @@ Landing de venda — plano único R$ 59,90/mês (cancele quando quiser).
 
 Marca: **Loven** · Instagram: [@somosloven](https://instagram.com/somosloven)
 
-## Domínio
+## Domínios
 
-- Landing: https://somosloven.com/
-- Sites das noivas + painel: https://app.somosloven.com/
-- Demo: https://app.somosloven.com/?site=sofiaelucas
+| Uso | Domínio |
+|-----|---------|
+| Landing (venda) | https://somosloven.com.br/ |
+| Sites das noivas + painel | https://app.somosloven.com.br/ |
+| Demo | https://app.somosloven.com.br/?site=sofiaelucas |
+| Casamento Rafa & Kevin | https://rafaekevin.com.br/ |
 
 ## Fluxo
 
@@ -21,18 +24,17 @@ Marca: **Loven** · Instagram: [@somosloven](https://instagram.com/somosloven)
 ```text
 MERCADOPAGO_ACCESS_TOKEN=...
 MERCADOPAGO_NOTIFICATION_URL=https://site-casamento-backend-nrfb.onrender.com/api/webhooks/mercadopago
-MERCADOPAGO_BACK_URL_SUCCESS=https://somosloven.com/sucesso.html
-MERCADOPAGO_BACK_URL_FAILURE=https://somosloven.com/
+MERCADOPAGO_BACK_URL_SUCCESS=https://somosloven.com.br/sucesso.html
+MERCADOPAGO_BACK_URL_FAILURE=https://somosloven.com.br/
 MERCADOPAGO_VALOR_MENSAL=59.90
-APP_SITE_PUBLIC_BASE_URL=https://app.somosloven.com
-MERCADOPAGO_ADMIN_FRONT_URL=https://app.somosloven.com/admin/painel.html
+APP_SITE_PUBLIC_BASE_URL=https://app.somosloven.com.br
+MERCADOPAGO_ADMIN_FRONT_URL=https://app.somosloven.com.br/admin/painel.html
 ```
 
-A aplicação no Mercado Pago precisa do produto **Assinaturas**.
-
-## DNS (Hostinger / registro)
+## DNS
 
 | Host | Tipo | Destino |
 |------|------|---------|
-| `@` / `www` | A / CNAME | hospedagem da **landing** |
-| `app` | CNAME | hospedagem dos **sites + painel** (GitHub Pages ou Hostinger) |
+| `@` / `www` (somosloven.com.br) | A / CNAME | **landing** |
+| `app` (app.somosloven.com.br) | CNAME | **sites + painel** |
+| `rafaekevin.com.br` | — | só o casamento de vocês (não misturar com a Loven) |
