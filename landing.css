@@ -530,11 +530,14 @@ main, .topo, .rodape { position: relative; z-index: 1; }
     50% { transform: translateY(-14px); }
 }
 
-/* Desktop: sobe o celular pra ficar mais alinhado ao notebook (mobile não mexe) */
+/* Desktop: celular maior, mais à esquerda e sobrepondo o notebook */
 @media (min-width: 901px) {
     .demo-phone {
-        bottom: 16%;
-        right: 4%;
+        width: min(34%, 210px);
+        bottom: 22%;
+        right: 14%;
+        border-radius: 30px;
+        padding: 8px 7px;
     }
 }
 
