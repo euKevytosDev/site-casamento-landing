@@ -15,7 +15,6 @@
     --font-body: "Manrope", system-ui, sans-serif;
     --max: 1080px;
     --raio: 2px;
-    --flor-gold: brightness(0) saturate(100%) invert(78%) sepia(28%) saturate(620%) hue-rotate(359deg) brightness(0.95);
 }
 
 * { box-sizing: border-box; }
@@ -141,71 +140,6 @@ main, .topo, .rodape { position: relative; z-index: 1; }
 
 .ornament-line--left::before { display: none; }
 
-/* Flores douradas de fundo */
-.flor-fundo {
-    position: absolute;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.28;
-}
-
-.flor-fundo img {
-    width: 100%;
-    height: auto;
-    filter: var(--flor-gold) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.25));
-    opacity: 0.9;
-}
-
-.flor-fundo--demo-l {
-    width: min(280px, 34vw);
-    left: -4vw;
-    top: 8%;
-    transform: rotate(-8deg);
-    animation: flor-breathe 9s ease-in-out infinite;
-}
-
-.flor-fundo--demo-r {
-    width: min(260px, 32vw);
-    right: -3vw;
-    bottom: 6%;
-    transform: rotate(10deg) scaleX(-1);
-    animation: flor-breathe 11s ease-in-out infinite reverse;
-}
-
-.flor-fundo--passos {
-    width: min(320px, 42vw);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -52%);
-    opacity: 0.14;
-    animation: flor-breathe 12s ease-in-out infinite;
-}
-
-.flor-fundo--preco-l {
-    width: min(240px, 30vw);
-    left: -2vw;
-    bottom: 0;
-    opacity: 0.22;
-}
-
-.flor-fundo--preco-r {
-    width: min(240px, 30vw);
-    right: -2vw;
-    top: 10%;
-    opacity: 0.22;
-    transform: scaleX(-1);
-}
-
-.flor-fundo--rodape {
-    width: min(220px, 40vw);
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, -30%);
-    opacity: 0.18;
-}
-
-@keyframes flor-breathe {
-    0%, 100% { opacity: 0.2; }
     50% { opacity: 0.34; }
 }
 
@@ -363,33 +297,6 @@ main, .topo, .rodape { position: relative; z-index: 1; }
         url("imagens/hero-couple.png") center 30% / cover no-repeat;
 }
 
-.hero-ornament {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    width: min(220px, 28vw);
-    opacity: 0.55;
-    animation: flor-sway 10s ease-in-out infinite;
-}
-
-.hero-ornament img {
-    width: 100%;
-    filter: var(--flor-gold) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
-}
-
-.hero-ornament--l {
-    left: 2vw;
-    bottom: 12vh;
-}
-
-.hero-ornament--r {
-    right: 2vw;
-    bottom: 14vh;
-    animation-delay: -4s;
-}
-
-@keyframes flor-sway {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-10px) rotate(1.5deg); }
 }
 
@@ -434,10 +341,6 @@ main, .topo, .rodape { position: relative; z-index: 1; }
     margin: 0 auto;
 }
 
-.bloco > *:not(.flor-fundo) {
-    position: relative;
-    z-index: 1;
-}
 
 .sec-kicker {
     margin: 0 0 10px;
@@ -854,9 +757,6 @@ main, .topo, .rodape { position: relative; z-index: 1; }
     .features { grid-template-columns: 1fr 1fr; gap: 20px; }
     .passos { grid-template-columns: 1fr; gap: 18px; max-width: 380px; margin-inline: auto; }
     .demo-mockup { width: min(100%, 640px); }
-    .hero-ornament { width: min(140px, 22vw); opacity: 0.4; }
-    .flor-fundo--demo-l,
-    .flor-fundo--demo-r { opacity: 0.18; }
 }
 
 @media (max-width: 560px) {
@@ -864,7 +764,6 @@ main, .topo, .rodape { position: relative; z-index: 1; }
     .marca-nome { font-size: 1rem; letter-spacing: 0.16em; }
     .hero { padding: 110px 5vw 64px; }
     .hero-brand { letter-spacing: 0.32em; margin-bottom: 14px; }
-    .hero-ornament { display: none; }
     .cta-row { flex-direction: column; align-items: stretch; }
     .cta-row .btn-primario,
     .cta-row .btn-outline { width: 100%; }
@@ -874,19 +773,12 @@ main, .topo, .rodape { position: relative; z-index: 1; }
     .bloco { padding: 64px 5vw; }
     .bloco-demo { padding-top: 40px; }
     .demo-mockup { width: 100%; }
-    .flor-fundo--preco-l,
-    .flor-fundo--preco-r,
-    .flor-fundo--passos { display: none; }
     .form-checkout { padding: 20px 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .demo-mockup,
-    .ambience-glow,
-    .hero-ornament,
-    .flor-fundo--demo-l,
-    .flor-fundo--demo-r,
-    .flor-fundo--passos {
+    .ambience-glow {
         animation: none !important;
     }
     .revelar {
