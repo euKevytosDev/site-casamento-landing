@@ -534,7 +534,7 @@ main, .topo, .rodape { position: relative; z-index: 1; }
 @media (min-width: 901px) {
     .demo-phone {
         width: min(34%, 210px);
-        bottom: 22%;
+        bottom: 11%;
         right: 14%;
         border-radius: 30px;
         padding: 8px 7px;
