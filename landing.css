@@ -530,6 +530,14 @@ main, .topo, .rodape { position: relative; z-index: 1; }
     50% { transform: translateY(-14px); }
 }
 
+/* Desktop: sobe o celular pra ficar mais alinhado ao notebook (mobile não mexe) */
+@media (min-width: 901px) {
+    .demo-phone {
+        bottom: 16%;
+        right: 4%;
+    }
+}
+
 /* ——— Features ——— */
 .bloco-features {
     border-top: 1px solid var(--linha);
