@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="landing.css">
 </head>
 <body>
+    <div class="ambience" aria-hidden="true">
+        <span class="ambience-glow ambience-glow--a"></span>
+        <span class="ambience-glow ambience-glow--b"></span>
+    </div>
+
     <header class="topo">
         <a class="marca" href="./index.html">
             <img class="marca-logo" src="imagens/brand/loven-logo-monograma.png" alt="" width="36" height="36">
@@ -25,8 +30,15 @@
     <main>
         <section class="hero">
             <div class="hero-bg" aria-hidden="true"></div>
+            <div class="hero-ornament hero-ornament--l" aria-hidden="true">
+                <img src="imagens/decor/flor-esq.png" alt="">
+            </div>
+            <div class="hero-ornament hero-ornament--r" aria-hidden="true">
+                <img src="imagens/decor/flor-dir.png" alt="">
+            </div>
             <div class="hero-content">
                 <p class="hero-brand">Loven</p>
+                <span class="ornament-line" aria-hidden="true"></span>
                 <h1>O convite que fica no celular<br>de quem você ama.</h1>
                 <p class="hero-lead">Site do casal com RSVP, presentes e galeria — um link só para o WhatsApp.</p>
                 <div class="cta-row">
@@ -36,8 +48,15 @@
             </div>
         </section>
 
-        <section id="demo" class="bloco bloco-demo">
+        <section id="demo" class="bloco bloco-demo revelar">
+            <div class="flor-fundo flor-fundo--demo-l" aria-hidden="true">
+                <img src="imagens/decor/flor-esq.png" alt="">
+            </div>
+            <div class="flor-fundo flor-fundo--demo-r" aria-hidden="true">
+                <img src="imagens/decor/flor-dir.png" alt="">
+            </div>
             <p class="sec-kicker">Demonstração</p>
+            <span class="ornament-line" aria-hidden="true"></span>
             <h2>Sofia &amp; Lucas</h2>
             <p class="bloco-lead">Um site completo, ao vivo — no celular e no computador.</p>
             <a class="demo-link" href="https://somosloven.com.br/sofiaelucas" target="_blank" rel="noopener">
@@ -53,31 +72,40 @@
             </a>
         </section>
 
-        <section class="bloco bloco-features">
+        <section class="bloco bloco-features revelar">
             <p class="sec-kicker">O essencial</p>
+            <span class="ornament-line ornament-line--left" aria-hidden="true"></span>
             <h2>Tudo que o casamento precisa,<br>num só lugar.</h2>
             <div class="features">
                 <article>
+                    <span class="feature-mark" aria-hidden="true"></span>
                     <h3>RSVP</h3>
                     <p>Confirmações organizadas no painel — sem cobrar resposta no WhatsApp.</p>
                 </article>
                 <article>
+                    <span class="feature-mark" aria-hidden="true"></span>
                     <h3>Presentes</h3>
                     <p>Lista 100% de vocês. PIX ou cartão, sem taxa do site.</p>
                 </article>
                 <article>
+                    <span class="feature-mark" aria-hidden="true"></span>
                     <h3>Personalização</h3>
                     <p>Fotos, cores, música e textos. Parece de vocês.</p>
                 </article>
                 <article>
+                    <span class="feature-mark" aria-hidden="true"></span>
                     <h3>Um link</h3>
                     <p>Galeria, local, contagem e mural. Abre no celular, sem app.</p>
                 </article>
             </div>
         </section>
 
-        <section class="bloco bloco-passos">
+        <section class="bloco bloco-passos revelar">
+            <div class="flor-fundo flor-fundo--passos" aria-hidden="true">
+                <img src="imagens/decor/flor-centro.png" alt="">
+            </div>
             <p class="sec-kicker">Como funciona</p>
+            <span class="ornament-line" aria-hidden="true"></span>
             <h2>Pronto em três passos.</h2>
             <ol class="passos">
                 <li>
@@ -98,8 +126,15 @@
             </ol>
         </section>
 
-        <section id="oferta" class="bloco bloco-preco">
+        <section id="oferta" class="bloco bloco-preco revelar">
+            <div class="flor-fundo flor-fundo--preco-l" aria-hidden="true">
+                <img src="imagens/decor/flor-esq.png" alt="">
+            </div>
+            <div class="flor-fundo flor-fundo--preco-r" aria-hidden="true">
+                <img src="imagens/decor/flor-dir.png" alt="">
+            </div>
             <p class="sec-kicker">Investimento</p>
+            <span class="ornament-line" aria-hidden="true"></span>
             <h2>R$&nbsp;59,90<span class="preco-periodo">/mês</span></h2>
             <p class="bloco-lead">≈ R$&nbsp;1,99 por dia · cancele quando quiser · 7 dias de garantia</p>
             <ul class="lista-plano">
@@ -111,8 +146,9 @@
             <a class="btn-primario" href="#comecar">Assinar agora</a>
         </section>
 
-        <section class="bloco bloco-faq">
+        <section class="bloco bloco-faq revelar">
             <p class="sec-kicker">Dúvidas</p>
+            <span class="ornament-line ornament-line--left" aria-hidden="true"></span>
             <h2>Perguntas frequentes</h2>
             <div class="faq">
                 <details>
@@ -134,8 +170,9 @@
             </div>
         </section>
 
-        <section id="comecar" class="bloco checkout">
+        <section id="comecar" class="bloco checkout revelar">
             <p class="sec-kicker">Começar</p>
+            <span class="ornament-line" aria-hidden="true"></span>
             <h2>Crie o site do casal</h2>
             <p class="bloco-lead">Assinatura de <strong>R$&nbsp;59,90/mês</strong> · 7 dias de garantia</p>
 
@@ -185,6 +222,10 @@
     </main>
 
     <footer class="rodape">
+        <div class="flor-fundo flor-fundo--rodape" aria-hidden="true">
+            <img src="imagens/decor/flor-centro.png" alt="">
+        </div>
+        <span class="ornament-line" aria-hidden="true"></span>
         <p class="rodape-brand">Loven</p>
         <p class="rodape-tag">site de casamento digital</p>
         <p class="rodape-links">

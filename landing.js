@@ -6,6 +6,28 @@ const btn = document.getElementById("btn-checkout");
 const slugInput = document.getElementById("slug");
 const cpfInput = document.getElementById("cpf");
 
+/* Reveal suave das seções */
+(() => {
+    const els = document.querySelectorAll(".revelar");
+    if (!els.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        els.forEach((el) => el.classList.add("is-visible"));
+        return;
+    }
+    const io = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    io.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+})();
+
 slugInput?.addEventListener("input", () => {
     slugInput.value = slugInput.value
         .toLowerCase()
