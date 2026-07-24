@@ -3,8 +3,34 @@ const API_BASE = window.SITE_CONFIG?.apiBase || "https://site-casamento-backend-
 const form = document.getElementById("form-checkout");
 const msg = document.getElementById("msg-checkout");
 const btn = document.getElementById("btn-checkout");
+const btnNext = document.getElementById("btn-step-next");
+const btnBack = document.getElementById("btn-step-back");
 const slugInput = document.getElementById("slug");
 const cpfInput = document.getElementById("cpf");
+const step1 = form?.querySelector('[data-step="1"]');
+const step2 = form?.querySelector('[data-step="2"]');
+const progressSteps = form?.querySelectorAll("[data-progress]");
+
+function setCheckoutStep(step) {
+    const onFirst = step === 1;
+    step1?.classList.toggle("is-active", onFirst);
+    step2?.classList.toggle("is-active", !onFirst);
+    if (step1) step1.hidden = !onFirst;
+    if (step2) step2.hidden = onFirst;
+    if (cpfInput) {
+        cpfInput.disabled = onFirst;
+        cpfInput.required = !onFirst;
+    }
+    progressSteps?.forEach((el) => {
+        el.classList.toggle("is-active", Number(el.dataset.progress) === step);
+    });
+    if (onFirst && msg) {
+        msg.className = "msg";
+        msg.textContent = "";
+    }
+}
+
+setCheckoutStep(1);
 
 (() => {
     const els = document.querySelectorAll(".revelar");
@@ -43,8 +69,24 @@ cpfInput?.addEventListener("input", () => {
     else cpfInput.value = `${d.slice(0, 3)}.${d.slice(3, 6)}.${d.slice(6, 9)}-${d.slice(9)}`;
 });
 
+btnNext?.addEventListener("click", () => {
+    const fields = step1?.querySelectorAll("input[required]");
+    for (const field of fields || []) {
+        if (!field.reportValidity()) return;
+    }
+    setCheckoutStep(2);
+    cpfInput?.focus();
+});
+
+btnBack?.addEventListener("click", () => setCheckoutStep(1));
+
 form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (step2?.hidden) {
+        setCheckoutStep(2);
+        return;
+    }
+
     msg.className = "msg";
     msg.textContent = "Preparando checkout do cartão...";
     btn.disabled = true;
@@ -101,9 +143,11 @@ fetch(`${API_BASE}/api/assinatura/plano`)
     .then((plano) => {
         if (!plano) return;
         if (plano.asaasConfigurado === false || plano.mpConfigurado === false) {
+            setCheckoutStep(2);
             msg.className = "msg erro";
             msg.textContent = "Checkout em configuração: falta a chave do Asaas no servidor.";
-            btn.disabled = true;
+            if (btn) btn.disabled = true;
+            if (btnNext) btnNext.disabled = true;
         }
         if (plano.modoTeste === true) {
             const aviso = document.createElement("p");
@@ -112,7 +156,7 @@ fetch(`${API_BASE}/api/assinatura/plano`)
             aviso.style.background = "#fff6e5";
             aviso.style.padding = "10px 12px";
             aviso.style.borderRadius = "8px";
-            aviso.style.marginTop = "12px";
+            aviso.style.marginBottom = "12px";
             aviso.textContent = "Modo sandbox Asaas ativo. Use cartão de teste — nenhum valor real será cobrado.";
             form?.prepend(aviso);
         }
