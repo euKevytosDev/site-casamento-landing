@@ -5,8 +5,47 @@ const msg = document.getElementById("msg-checkout");
 const btn = document.getElementById("btn-checkout");
 const slugInput = document.getElementById("slug");
 const cpfInput = document.getElementById("cpf");
+const planoInput = document.getElementById("plano");
+const planoLabel = document.getElementById("plano-label");
+const termos = document.getElementById("termos-checkout");
 
-/* Reveal suave das seções */
+const TEXTOS = {
+    trial: {
+        label: "Teste grátis — 14 dias",
+        termos: "No teste grátis, você cadastra o cartão agora e a 1ª cobrança de R$ 59,90 acontece no 15º dia. Cancele quando quiser.",
+        botao: "Cadastrar cartão e começar"
+    },
+    mensal: {
+        label: "Mensal — R$ 59,90",
+        termos: "Assinatura mensal de R$ 59,90 no cartão. Sem fidelidade — cancele quando quiser.",
+        botao: "Assinar com cartão"
+    }
+};
+
+function setPlano(plano) {
+    const p = plano === "mensal" ? "mensal" : "trial";
+    if (planoInput) planoInput.value = p;
+    document.querySelectorAll(".plano-chip").forEach((el) => {
+        el.classList.toggle("is-active", el.dataset.plano === p);
+    });
+    document.querySelectorAll(".plano-card").forEach((el) => {
+        el.classList.toggle("is-selected", el.dataset.plano === p);
+    });
+    const t = TEXTOS[p];
+    if (planoLabel) planoLabel.textContent = t.label;
+    if (termos) termos.textContent = t.termos;
+    if (btn) btn.textContent = t.botao;
+}
+
+document.querySelectorAll("[data-escolher-plano]").forEach((el) => {
+    el.addEventListener("click", () => setPlano(el.dataset.escolherPlano));
+});
+document.querySelectorAll(".plano-chip").forEach((el) => {
+    el.addEventListener("click", () => setPlano(el.dataset.plano));
+});
+
+setPlano(planoInput?.value || "trial");
+
 (() => {
     const els = document.querySelectorAll(".revelar");
     if (!els.length) return;
@@ -47,7 +86,7 @@ cpfInput?.addEventListener("input", () => {
 form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.className = "msg";
-    msg.textContent = "Criando sua conta...";
+    msg.textContent = "Preparando checkout do cartão...";
     btn.disabled = true;
 
     const emailPainel = document.getElementById("email").value.trim();
@@ -65,7 +104,8 @@ form?.addEventListener("submit", async (e) => {
         slug: document.getElementById("slug").value.trim(),
         email: emailPainel,
         cpf,
-        senha: document.getElementById("senha").value
+        senha: document.getElementById("senha").value,
+        plano: planoInput?.value || "trial"
     };
 
     try {
@@ -83,28 +123,22 @@ form?.addEventListener("submit", async (e) => {
         }
 
         msg.className = "msg ok";
-        msg.textContent = data.mensagem || "Conta criada!";
-
-        // Trial: vai pro painel. Sem trial / precisa pagar: Asaas.
-        if (data.emTrial && data.painelUrl) {
-            window.location.href = data.painelUrl;
-        } else if (data.checkoutUrl) {
+        msg.textContent = data.mensagem || "Redirecionando para cadastrar o cartão...";
+        if (data.checkoutUrl) {
             window.location.href = data.checkoutUrl;
-        } else if (data.painelUrl) {
-            window.location.href = data.painelUrl;
         } else {
-            throw new Error("Resposta sem URL de painel ou pagamento.");
+            throw new Error("Checkout sem URL. Verifique a configuração do Asaas.");
         }
     } catch (err) {
         msg.className = "msg erro";
-        msg.textContent = err.message || "Falha ao criar a conta.";
+        msg.textContent = err.message || "Falha ao iniciar o checkout.";
         btn.disabled = false;
     }
 });
 
 fetch(`${API_BASE}/api/assinatura/plano`)
-    .then(r => r.ok ? r.json() : null)
-    .then(plano => {
+    .then((r) => (r.ok ? r.json() : null))
+    .then((plano) => {
         if (!plano) return;
         if (plano.asaasConfigurado === false || plano.mpConfigurado === false) {
             msg.className = "msg erro";
@@ -119,7 +153,7 @@ fetch(`${API_BASE}/api/assinatura/plano`)
             aviso.style.padding = "10px 12px";
             aviso.style.borderRadius = "8px";
             aviso.style.marginTop = "12px";
-            aviso.textContent = "Modo sandbox Asaas ativo. Use dados de teste — nenhum valor real será cobrado.";
+            aviso.textContent = "Modo sandbox Asaas ativo. Use cartão de teste — nenhum valor real será cobrado.";
             form?.prepend(aviso);
         }
     })
