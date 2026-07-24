@@ -47,7 +47,7 @@ cpfInput?.addEventListener("input", () => {
 form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.className = "msg";
-    msg.textContent = "Gerando checkout...";
+    msg.textContent = "Criando sua conta...";
     btn.disabled = true;
 
     const emailPainel = document.getElementById("email").value.trim();
@@ -83,15 +83,21 @@ form?.addEventListener("submit", async (e) => {
         }
 
         msg.className = "msg ok";
-        msg.textContent = data.mensagem || "Redirecionando ao pagamento...";
-        if (data.checkoutUrl) {
+        msg.textContent = data.mensagem || "Conta criada!";
+
+        // Trial: vai pro painel. Sem trial / precisa pagar: Asaas.
+        if (data.emTrial && data.painelUrl) {
+            window.location.href = data.painelUrl;
+        } else if (data.checkoutUrl) {
             window.location.href = data.checkoutUrl;
+        } else if (data.painelUrl) {
+            window.location.href = data.painelUrl;
         } else {
-            throw new Error("Checkout sem URL. Verifique a configuração do Asaas.");
+            throw new Error("Resposta sem URL de painel ou pagamento.");
         }
     } catch (err) {
         msg.className = "msg erro";
-        msg.textContent = err.message || "Falha ao iniciar o pagamento.";
+        msg.textContent = err.message || "Falha ao criar a conta.";
         btn.disabled = false;
     }
 });
