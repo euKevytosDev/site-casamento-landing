@@ -664,6 +664,17 @@ nav {
     margin-top: 18px;
     color: var(--ink-soft);
 }
+.ajuda-criar {
+    text-align: center;
+    margin: 10px 0 0;
+    color: var(--ink-faint);
+    font-size: 0.88rem;
+}
+.ajuda-criar a {
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
 
 .rodape {
     padding: 48px 5vw 56px;
