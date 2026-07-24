@@ -5,46 +5,6 @@ const msg = document.getElementById("msg-checkout");
 const btn = document.getElementById("btn-checkout");
 const slugInput = document.getElementById("slug");
 const cpfInput = document.getElementById("cpf");
-const planoInput = document.getElementById("plano");
-const planoLabel = document.getElementById("plano-label");
-const termos = document.getElementById("termos-checkout");
-
-const TEXTOS = {
-    trial: {
-        label: "Teste grátis — 14 dias",
-        termos: "No teste grátis, você cadastra o cartão agora e a 1ª cobrança de R$ 59,90 acontece no 15º dia. Cancele quando quiser.",
-        botao: "Cadastrar cartão e começar"
-    },
-    mensal: {
-        label: "Mensal — R$ 59,90",
-        termos: "Assinatura mensal de R$ 59,90 no cartão. Sem fidelidade — cancele quando quiser.",
-        botao: "Assinar com cartão"
-    }
-};
-
-function setPlano(plano) {
-    const p = plano === "mensal" ? "mensal" : "trial";
-    if (planoInput) planoInput.value = p;
-    document.querySelectorAll(".plano-chip").forEach((el) => {
-        el.classList.toggle("is-active", el.dataset.plano === p);
-    });
-    document.querySelectorAll(".plano-card").forEach((el) => {
-        el.classList.toggle("is-selected", el.dataset.plano === p);
-    });
-    const t = TEXTOS[p];
-    if (planoLabel) planoLabel.textContent = t.label;
-    if (termos) termos.textContent = t.termos;
-    if (btn) btn.textContent = t.botao;
-}
-
-document.querySelectorAll("[data-escolher-plano]").forEach((el) => {
-    el.addEventListener("click", () => setPlano(el.dataset.escolherPlano));
-});
-document.querySelectorAll(".plano-chip").forEach((el) => {
-    el.addEventListener("click", () => setPlano(el.dataset.plano));
-});
-
-setPlano(planoInput?.value || "trial");
 
 (() => {
     const els = document.querySelectorAll(".revelar");
@@ -105,7 +65,7 @@ form?.addEventListener("submit", async (e) => {
         email: emailPainel,
         cpf,
         senha: document.getElementById("senha").value,
-        plano: planoInput?.value || "trial"
+        plano: "trial"
     };
 
     try {
